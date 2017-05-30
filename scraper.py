@@ -6,11 +6,11 @@ oscn_starting_url = "http://www.oscn.net/dockets/Results.aspx"
 br = mechanize.Browser()
 br.set_handle_robots(False)
 
-for form in br.forms():
-    print "Form name:", form.name
-    print form
+#for form in br.forms():
+    #print "Form name:", form.name
+    #print form
 
-#response = br.open(oscn_starting_url)
+response = br.open(oscn_starting_url)
 
 #print "All forms:", [ form.name  for form in br.forms() ]
 
@@ -22,8 +22,8 @@ for form in br.forms():
 #br["ctl00$phMainContent$txtGrantDateTo"]  = "20/01/2004"
 
 
-#response = br.submit()
-#print response.read()
+response = br.submit()
+print response.read()
 
 
 # import scraperwiki
