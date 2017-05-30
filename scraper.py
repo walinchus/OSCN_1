@@ -5,6 +5,7 @@ oscn_starting_url = "http://www.oscn.net/dockets/Results.aspx"
 
 br = mechanize.Browser()
 response = br.open(oscn_starting_url)
+br.set_handle_robots(False)
 
 print "All forms:", [ form.name  for form in br.forms() ]
 
