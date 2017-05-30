@@ -5,12 +5,17 @@ oscn_starting_url = "http://www.oscn.net/dockets/Results.aspx"
 
 br = mechanize.Browser()
 br.set_handle_robots(False)
-response = br.open(oscn_starting_url)
 
-print "All forms:", [ form.name  for form in br.forms() ]
+for form in br.forms():
+    print "Form name:", form.name
+    print form
 
-br.select_form(name="search-form")
-print br.form
+#response = br.open(oscn_starting_url)
+
+#print "All forms:", [ form.name  for form in br.forms() ]
+
+#br.select_form(name="search-form")
+#print br.form
 
 #br["ctl00$phMainContent$dropDownAwardDate"] = ["Between"]
 #br["ctl00$phMainContent$txtGrantDateFrom"] = "01/01/2004"
@@ -18,7 +23,7 @@ print br.form
 
 
 #response = br.submit()
-print response.read()
+#print response.read()
 
 
 # import scraperwiki
