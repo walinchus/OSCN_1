@@ -1,5 +1,24 @@
-# This is a template for a Python scraper on morph.io (https://morph.io)
-# including some code snippets below that you should find helpful
+import mechanize 
+import lxml.html
+
+oscn_starting_url = "http://www.oscn.net/dockets/Results.aspx"
+
+br = mechanize.Browser()
+response = br.open(oscn_starting_url)
+
+print "All forms:", [ form.name  for form in br.forms() ]
+
+br.select_form(name="search-form")
+print br.form
+
+#br["ctl00$phMainContent$dropDownAwardDate"] = ["Between"]
+#br["ctl00$phMainContent$txtGrantDateFrom"] = "01/01/2004"
+#br["ctl00$phMainContent$txtGrantDateTo"]  = "20/01/2004"
+
+
+#response = br.submit()
+print response.read()
+
 
 # import scraperwiki
 # import lxml.html
