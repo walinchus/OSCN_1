@@ -12,6 +12,31 @@ br.set_handle_robots(False)
 
 response = br.open(oscn_starting_url)
 
+
+def initParams(root):
+    """Get the default values of form parameters.
+    initParams takes as input an lxml tree - typically the conversion of an
+    HTML page.  However initParams can only cope with one form, so if the page
+    has multiple forms, the caller should select only the part they want. The 
+    return value is a dict containing the default values of all the form fields
+    that have a default value.  
+    It's particularly useful for sites that use hidden form fields to manage
+    user state (ASP.NET is an example).
+    The intended use is:
+     - use initParams to get default form contents
+     - modify any fields as desired
+     - urlencode the dict and pass it to your favourite HTTP library to submit the form.
+    """
+    fields = root.cssselect("input")
+    params = {}
+    for field in fields:
+        v = field.get("value")
+        if v is not None:
+            params[field.get("name")] = v
+    #print params
+    return params
+
+
 #print "All forms:", [ form.name  for form in br.forms() ]
 
 #br.select_form(name="search-form")
@@ -22,8 +47,8 @@ response = br.open(oscn_starting_url)
 #br["ctl00$phMainContent$txtGrantDateTo"]  = "20/01/2004"
 
 
-response = br.submit()
-print response.read()
+#response = br.submit()
+#print response.read()
 
 
 # import scraperwiki
