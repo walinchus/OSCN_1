@@ -1,5 +1,5 @@
 import mechanize 
-import lxml.html
+import lxml
 
 oscn_starting_url = "http://www.oscn.net/dockets/Results.aspx"
 
